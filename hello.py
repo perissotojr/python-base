@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
+
+#Este programa imprime Hello World
 print("Hello, World!!")
-print('Junior Perissoto'.upper())
-print(56 + 6)
