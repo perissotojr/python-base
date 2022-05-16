@@ -1,33 +1,39 @@
 #!/usr/bin/env python
 """Imprime a tabuada do 1 ao 10.
 
-Tabuado do 1
-1
-2
-3
-....
+---Tabuada do 1---
 
-------------------------------
+	1X1 = 1
+	1X2 = 2
+	1X3 = 3
+...
+##########################################
+---Tabuada do 2---
 
-Tabuada do 2
-2
-4
-8
-....
-
+	2X1 = 2
+	2X2 = 4
+	2X3 = 6
+...
+##########################################
 """
-__version__ = "0.1.0"
+__version__ = "0.1.1"
 __author__ = "Junior Perissoto"
 
-
-#numeros = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+#alterações no codigo
+#Iterable (percorriveis)
 
 numeros = list(range(1, 11))
 
-#leitura -> para cada numero me numeros:
+for num1 in numeros:
+	print("{:-^20}".format(f"Tabuada do {num1}"))
+	print()
+	for num2 in numeros:
+		resultado = num1 * num2
+		print("{:^20}".format(f"{num1} X {num2} = {resultado}"))
+	print("#" * 20)
 
-for numero in numeros:
-	print("Tabuada do:",numero)
-	for outro_numero in numeros:
-		print(numero * outro_numero)
-	print("-----------------------")
+
+
+
+
+
