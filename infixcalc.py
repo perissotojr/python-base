@@ -25,3 +25,48 @@ n2: 4
 9
 """
 __version__ = "0.1.0"
+ 
+import sys
+argumentos = sys.argv[1:]
+
+if not argumentos:
+	operacao = input("Operação:")
+	n1 = input("Digite número para n1:")
+	n2 = input("Digite ńumero para n2:")
+	argumentos = [operacao, n1 ,n2 ]
+elif len(argumentos) !=3:
+	print("Número de argumentos inválidos")
+	print("ex: `sum 5 5`")
+	sys.exit(1)
+
+operacao, *nums =  argumentos
+
+valida_operacoes = ("sum","sub","mul","div")
+if operacao not in valida_operacoes:
+	print("valida_operacoes")
+	sys.exit(1)
+
+num_validados = []
+for num in nums:
+	if not num.replace(".", "").isdigit():
+		print(f"Número inválido {num}")
+		sys.exit(1)
+	if "." in num:
+		num = float(num)
+	else:
+		num = int(num)
+	num_validados.append(num)
+
+n1 , n2 = num_validados
+
+# TODO: usar dict de funcoes:
+if operacao == "sum":
+	resultado = n1 + n2
+elif operacao == "sub":
+	resultado = n1 - n2
+elif operacao == "mul":
+	resultado = n1 * n2
+elif operacao == "div":
+	resultado = n1 / n2	
+
+print(f"O resultado é {resultado}")
