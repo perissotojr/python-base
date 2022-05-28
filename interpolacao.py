@@ -1,35 +1,45 @@
 #!/usr/bin/env python
-""" Um exemplo como usar interpolação e placeholders no pyhton 
+""" Imprime a mensagem de um email
+
+NAO MANDE SPAM!!!
 """
-__version__ = "0.0.1"
+__version__ = "0.1.0"
 __author__ = "Junior Perissoto"
 
+import os
+import sys
 
-email_tmpl = """
-Olá, %(nome)s
 
-Tem interesse em comprar %(produto)s?
+argumentos = sys.argv[1:]
 
-Esse produto é ótimo para resolver
-%(texto)s
+if not argumentos:
+	print("Informe o nome do arquivo de emails")
+	sys.exit(1)
 
-Clique agora em %(link)s
+filename = argumentos[0]
+templatename = argumentos[1]
 
-Apenas %(quantidade)d disponiveis!
+path = os.curdir
+filepath = os.path.join(path, filename)
+templatepath = os.path.join(path, templatename)
 
-Preço promocional %(preco).2f
-"""
+clientes = []
+for line in open(filepath):
+	name , email = line.split(",")
 
-clientes = ["Maria","Pedro","Jose"]
-
-for cliente in clientes:
+	# TODO: subistituir ppor envio de email
+	print(f"Enviando email para: {email}")
+	print()
 	print( 
-	email_tmpl
+	open(templatepath).read()
 	 %{
-		"nome":cliente,
+		"nome":name,
 		"produto": "Caneta",
 		"texto": "Escreve muito bem!!!",
 		"link": "https://www.Canetaslegais.com",
 		"quantidade": 1,
 		"preco": 50.50,
+		"email": email,
 	 })
+	print("-" * 50)
+
